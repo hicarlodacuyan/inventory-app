@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getCategories } from "./features/categorySlice";
+import LoadingSpinner from "./components/LoadingSpinner";
 
 function App() {
   const { categories, isLoading, isError, message } = useSelector(
@@ -17,13 +18,15 @@ function App() {
   }, []);
 
   if (isLoading) {
-    return <p>Loading...</p>;
+    return <LoadingSpinner />;
   }
 
   return (
-    <div>
+    <div className="flex justify-center items-center gap-4 h-screen bg-gray-100">
       {categories.map((category) => (
-        <p>{category.name}</p>
+        <p className="text-4xl p-8 bg-red-300" key={category.id}>
+          {category.name}
+        </p>
       ))}
     </div>
   );
