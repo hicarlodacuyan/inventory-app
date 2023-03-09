@@ -13,5 +13,6 @@ const connectToDB = async (url) => {
 url ? connectToDB(url) : console.log("Error connecting to DB");
 
 app.use(cors());
+app.use(express.json());
 
 module.exports = app;
