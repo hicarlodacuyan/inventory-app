@@ -1,6 +1,14 @@
 import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { deleteCategory } from "../features/categorySlice";
 
 const CategoriesList = ({ categories }) => {
+  const dispatch = useDispatch();
+
+  const handleDelete = (id) => {
+    dispatch(deleteCategory(id));
+  };
+
   return (
     <ul className="flex flex-col md:flex-row gap-4 text-white flex-wrap">
       {categories.map((category) => (
@@ -13,6 +21,15 @@ const CategoriesList = ({ categories }) => {
             <Link to={`/categories/${category.id}`} state={category}>
               More info &rarr;
             </Link>
+          </div>
+          <div className="flex text-center bg-emerald-400">
+            <button className="flex-1 bg-blue-300">Edit</button>
+            <button
+              onClick={() => handleDelete(category.id)}
+              className="flex-1 bg-red-300"
+            >
+              Delete
+            </button>
           </div>
         </li>
       ))}

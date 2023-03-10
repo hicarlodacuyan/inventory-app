@@ -4,6 +4,7 @@ import CategoriesList from "../components/CategoriesList";
 import { getCategories } from "../features/categorySlice";
 import { useEffect } from "react";
 import LoadingSpinner from "../components/LoadingSpinner";
+import AddCategoryForm from "../components/AddCategoryForm";
 
 const Categories = () => {
   const { categories, isLoading, isError, message } = useSelector(
@@ -34,6 +35,8 @@ const Categories = () => {
             </Link>
             Categories
           </h1>
+          <AddCategoryForm />
+          <hr className="my-4" />
           <CategoriesList categories={categories} />
         </>
       )}
