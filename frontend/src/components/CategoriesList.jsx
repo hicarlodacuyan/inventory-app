@@ -1,9 +1,6 @@
 import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
 
-const CategoriesList = () => {
-  const { categories } = useSelector((state) => state.category);
-
+const CategoriesList = ({ categories }) => {
   return (
     <ul className="flex flex-col md:flex-row gap-4 text-white flex-wrap">
       {categories.map((category) => (
