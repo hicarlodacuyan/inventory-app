@@ -1,5 +1,5 @@
 import { Link, useLocation } from "react-router-dom";
-import Items from "../components/Items";
+import ItemsList from "../components/ItemsList";
 
 const Category = () => {
   const location = useLocation();
@@ -13,7 +13,7 @@ const Category = () => {
         </Link>
         {currentCategory.name}
       </h1>
-      <Items items={currentCategory.items} />
+      <ItemsList items={currentCategory.items} />
     </div>
   );
 };
