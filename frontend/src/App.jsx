@@ -1,35 +1,16 @@
-import { useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { getCategories } from "./features/categorySlice";
-import LoadingSpinner from "./components/LoadingSpinner";
+import { Route, Routes } from "react-router-dom";
+import Home from "./pages/Home";
+import Categories from "./pages/Categories";
+import Category from "./pages/Category";
 
-function App() {
-  const { categories, isLoading, isError, message } = useSelector(
-    (state) => state.category
-  );
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    if (isError) {
-      console.log(message);
-    }
-
-    dispatch(getCategories());
-  }, []);
-
-  if (isLoading) {
-    return <LoadingSpinner />;
-  }
-
+const App = () => {
   return (
-    <div className="flex justify-center items-center gap-4 h-screen bg-gray-100">
-      {categories.map((category) => (
-        <p className="text-4xl p-8 bg-red-300" key={category.id}>
-          {category.name}
-        </p>
-      ))}
-    </div>
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/categories" element={<Categories />} />
+      <Route path="/categories/:id" element={<Category />} />
+    </Routes>
   );
-}
+};
 
 export default App;
