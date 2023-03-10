@@ -3,7 +3,6 @@ import categoryService from "../services/categoryService";
 
 const initialState = {
   categories: [],
-  currentCategory: null,
   isError: false,
   isSuccess: false,
   isLoading: false,
@@ -126,19 +125,6 @@ export const categorySlice = createSlice({
         state.isError = true;
         state.message = action.payload;
         state.categories = undefined;
-      })
-      .addCase(getCategory.pending, (state) => {
-        state.isLoading = true;
-      })
-      .addCase(getCategory.fulfilled, (state, action) => {
-        state.isLoading = false;
-        state.currentCategory = action.payload;
-      })
-      .addCase(getCategory.rejected, (state, action) => {
-        state.isLoading = false;
-        state.isError = true;
-        state.message = action.payload;
-        state.currentCategory = null;
       });
   },
 });

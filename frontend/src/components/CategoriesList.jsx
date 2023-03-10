@@ -1,26 +1,8 @@
-import { useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { getCategories } from "../features/categorySlice";
-import LoadingSpinner from "./LoadingSpinner";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const CategoriesList = () => {
-  const { categories, isLoading, isError, message } = useSelector(
-    (state) => state.category
-  );
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    if (isError) {
-      console.log(message);
-    }
-
-    dispatch(getCategories());
-  }, []);
-
-  if (isLoading) {
-    return <LoadingSpinner />;
-  }
+  const { categories } = useSelector((state) => state.category);
 
   return (
     <ul className="flex flex-col md:flex-row gap-4 text-white flex-wrap">
@@ -31,7 +13,9 @@ const CategoriesList = () => {
             <p className="italic">{category.items.length} variety</p>
           </div>
           <div className="text-center bg-blue-400 py-2">
-            <Link to={`/categories/${category.id}`}>More info &rarr;</Link>
+            <Link to={`/categories/${category.id}`} state={category}>
+              More info &rarr;
+            </Link>
           </div>
         </li>
       ))}
