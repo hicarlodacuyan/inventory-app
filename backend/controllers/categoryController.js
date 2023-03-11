@@ -39,6 +39,10 @@ const editCategory = async (req, res) => {
 
   const updatedCategory = await Category.findByIdAndUpdate(id, category, {
     new: true,
+  }).populate("items", {
+    name: 1,
+    description: 1,
+    price: 1,
   });
 
   res.json(updatedCategory);
