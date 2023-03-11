@@ -62,7 +62,11 @@ const AddItemForm = ({ categories }) => {
         placeholder="Description"
         required
       />
+      <label htmlFor="price" className="-mb-4 italic text-gray-500">
+        Price in USD
+      </label>
       <input
+        id="price"
         className="bg-transparent border-2 outline-none rounded-md p-2 focus:border-blue-500"
         type="text"
         value={price}
@@ -71,9 +75,14 @@ const AddItemForm = ({ categories }) => {
         placeholder="Price in USD"
         required
       />
+      <label htmlFor="category" className="-mb-4 italic text-gray-500">
+        Select category
+      </label>
       <select
+        id="category"
         value={category}
         onChange={(e) => setSelectedCategory(e.target.value)}
+        className="bg-white border border-gray-300 rounded-md px-3 py-2 mt-1 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
       >
         {categories.map((category) => (
           <option value={category.id} key={category.id}>

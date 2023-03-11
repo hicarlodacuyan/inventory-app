@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { deleteCategory, updateCategory } from "../features/categorySlice";
+import { deleteCategory } from "../features/categorySlice";
 import EditCategoryForm from "./EditCategoryForm";
 
 const CategoriesList = ({ categories }) => {
@@ -41,7 +41,7 @@ const CategoriesList = ({ categories }) => {
                 More info &rarr;
               </Link>
             </div>
-            <div className="flex text-center bg-emerald-400">
+            <div className="flex text-center">
               <button
                 onClick={() => handleEdit(category)}
                 className="flex-1 font-bold bg-blue-300 p-2"
