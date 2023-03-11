@@ -20,7 +20,7 @@ const AddCategoryForm = () => {
   return (
     <form
       onSubmit={handleCreate}
-      className="flex flex-col gap-4 p-4 bg-white md:max-w-md"
+      className="flex flex-col gap-4 p-4 bg-white md:max-w-md rounded-lg drop-shadow-lg"
     >
       <h1 className="text-xl">Create new category</h1>
       <input
