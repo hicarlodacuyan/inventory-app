@@ -15,8 +15,8 @@ const getItem = async (req, res) => {
 };
 
 const createItem = async (req, res) => {
-  const { name, description, price, category } = req.body;
-  const savedCategory = await Category.findById(category);
+  const { name, description, price, selectedCategory } = req.body;
+  const savedCategory = await Category.findById(selectedCategory);
 
   const item = new Item({
     name,
