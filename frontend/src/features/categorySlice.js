@@ -65,9 +65,9 @@ export const getCategory = createAsyncThunk(
 
 export const updateCategory = createAsyncThunk(
   "categories/updateCategory",
-  async ({ id, category }, thunkAPI) => {
+  async ({ id, name }, thunkAPI) => {
     try {
-      return await categoryService.getCategory(id, category);
+      return await categoryService.updateCategory(id, name);
     } catch (error) {
       const message =
         (error.response &&
@@ -150,6 +150,24 @@ export const categorySlice = createSlice({
         );
       })
       .addCase(deleteCategory.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.payload;
+      })
+      .addCase(updateCategory.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(updateCategory.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = true;
+        const updatedCategory = action.meta.arg;
+        state.categories = state.categories.map((category) =>
+          category.id === updatedCategory.id
+            ? { ...category, name: updatedCategory.name }
+            : category
+        );
+      })
+      .addCase(updateCategory.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
         state.message = action.payload;
