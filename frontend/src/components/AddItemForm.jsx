@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { createItem } from "../features/itemSlice";
 
 const AddItemForm = ({ categories }) => {
@@ -9,7 +9,7 @@ const AddItemForm = ({ categories }) => {
     description: "",
     price: 0,
   });
-  const [selectedCategory, setSelectedCategory] = useState(categories);
+  const [selectedCategory, setSelectedCategory] = useState(categories[0].id);
   const { name, description, price, category } = newItem;
 
   const handleCreate = async (e) => {
@@ -21,8 +21,6 @@ const AddItemForm = ({ categories }) => {
       price,
       selectedCategory,
     };
-
-    console.log(item);
 
     dispatch(createItem(item));
     setNewItem({
@@ -78,7 +76,9 @@ const AddItemForm = ({ categories }) => {
         onChange={(e) => setSelectedCategory(e.target.value)}
       >
         {categories.map((category) => (
-          <option value={category.id}>{category.name}</option>
+          <option value={category.id} key={category.id}>
+            {category.name}
+          </option>
         ))}
       </select>
       <button

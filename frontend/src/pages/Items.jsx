@@ -40,7 +40,12 @@ const Items = () => {
             </Link>
             Items
           </h1>
-          <AddItemForm categories={categories} />
+          {categories.length === 0 ? (
+            ""
+          ) : (
+            <AddItemForm categories={categories} />
+          )}
+          <hr className="my-4" />
           <ItemsList items={items} />
         </>
       )}
