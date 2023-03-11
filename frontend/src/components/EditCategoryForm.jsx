@@ -21,9 +21,14 @@ const EditCategoryForm = ({ category, onCancel }) => {
   return (
     <form
       onSubmit={handleUpdate}
-      className="flex flex-col gap-4 p-4 bg-white md:max-w-md rounded-lg drop-shadow-lg"
+      className="flex flex-col gap-4 p-4 mb-4 bg-white md:max-w-md rounded-lg drop-shadow-lg"
     >
-      <h1 className="text-xl">Edit category</h1>
+      <div className="flex justify-between items-center">
+        <h1 className="text-xl">Edit category</h1>
+        <button type="button" onClick={onCancel} className="text-2xl font-bold">
+          &times;
+        </button>
+      </div>
       <input
         className="bg-transparent border-2 outline-none rounded-md p-2 focus:border-blue-500"
         type="text"
