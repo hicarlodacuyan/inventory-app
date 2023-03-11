@@ -4,17 +4,23 @@ import { useEffect } from "react";
 import ItemsList from "../components/ItemsList";
 import LoadingSpinner from "../components/LoadingSpinner";
 import { getItems } from "../features/itemSlice";
+import AddItemForm from "../components/AddItemForm";
+import { getCategories } from "../features/categorySlice";
 
 const Items = () => {
   const { items, isLoading, isError, message } = useSelector(
     (state) => state.item
   );
-
+  const { categories } = useSelector((state) => state.category);
   const dispatch = useDispatch();
 
   useEffect(() => {
     if (items.length === 0) {
       dispatch(getItems());
+    }
+
+    if (categories.length === 0) {
+      dispatch(getCategories());
     }
 
     if (isError) {
@@ -34,6 +40,7 @@ const Items = () => {
             </Link>
             Items
           </h1>
+          <AddItemForm categories={categories} />
           <ItemsList items={items} />
         </>
       )}

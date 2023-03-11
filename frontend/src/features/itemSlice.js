@@ -125,6 +125,19 @@ export const itemSlice = createSlice({
         state.isError = true;
         state.message = action.payload;
         state.items = undefined;
+      })
+      .addCase(createItem.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(createItem.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = true;
+        state.items.push(action.payload);
+      })
+      .addCase(createItem.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.payload;
       });
   },
 });
