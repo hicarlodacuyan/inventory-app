@@ -45,7 +45,7 @@ const Home = () => {
     <div className="h-screen bg-slate-100 p-4">
       <h1 className="text-2xl font-bold mb-4">Home</h1>
       <section className="flex flex-col md:flex-row gap-4 text-white flex-wrap">
-        <div className="flex-1 bg-cyan-300 md:max-w-md">
+        <div className="flex-1 bg-cyan-300 md:max-w-md rounded-lg overflow-hidden drop-shadow-lg">
           <div className="flex justify-between p-4">
             <div>
               {categoryIsLoading ? (
@@ -84,11 +84,11 @@ const Home = () => {
               </svg>
             </div>
           </div>
-          <div className="text-center bg-cyan-400 py-2">
+          <div className="text-center font-bold bg-cyan-400 py-2">
             <Link to="/categories">More info &rarr;</Link>
           </div>
         </div>
-        <div className="flex-1 bg-teal-400 md:max-w-md">
+        <div className="flex-1 bg-teal-400 md:max-w-md rounded-lg overflow-hidden drop-shadow-lg">
           <div className="flex justify-between p-4">
             <div>
               {itemIsLoading ? (
@@ -121,7 +121,7 @@ const Home = () => {
               </svg>
             </div>
           </div>
-          <div className="text-center bg-teal-500 py-2">
+          <div className="text-center font-bold bg-teal-500 py-2">
             <Link to="/items">More info &rarr;</Link>
           </div>
         </div>
