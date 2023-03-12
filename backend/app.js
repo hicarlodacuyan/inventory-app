@@ -19,6 +19,6 @@ app.use(cors());
 app.use(express.json());
 app.use("/api/items", itemRouter);
 app.use("/api/categories", categoryRouter);
-app.use(express.static(path.join(__dirname, "../", "frontend", "dist")));
+app.use(express.static(path.join(__dirname, "dist")));
 
 module.exports = app;

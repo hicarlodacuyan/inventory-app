@@ -10,9 +10,7 @@ app.get("/", (_req, res) => {
 });
 
 app.get("*", (_req, res) => {
-  res.sendFile("index.html", {
-    root: path.join(__dirname, "../", "frontend", "dist"),
-  });
+  res.sendFile("index.html", { root: path.join(__dirname, "dist") });
 });
 
 server.listen(config.PORT, () => {
