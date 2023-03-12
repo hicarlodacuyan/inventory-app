@@ -19,7 +19,9 @@ const ItemsList = ({ items }) => {
   return (
     <>
       {editItem && (
-        <EditItemForm item={editItem} onCancel={() => setEditItem(null)} />
+        <div className="fixed inset-0 m-auto flex justify-center items-center bg-gray-100/50 z-20">
+          <EditItemForm item={editItem} onCancel={() => setEditItem(null)} />
+        </div>
       )}
       <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 text-white flex-wrap">
         {items?.map((item) => (

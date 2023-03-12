@@ -1,11 +1,12 @@
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import ItemsList from "../components/ItemsList";
 import LoadingSpinner from "../components/common/loading/LoadingSpinner";
 import { getItems } from "../features/itemSlice";
 import AddItemForm from "../components/AddItemForm";
 import { getCategories } from "../features/categorySlice";
+import AddIcon from "../components/common/icons/AddIcon";
 
 const Items = () => {
   const { items, isLoading, isError, message } = useSelector(
@@ -13,6 +14,7 @@ const Items = () => {
   );
   const { categories } = useSelector((state) => state.category);
   const dispatch = useDispatch();
+  const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
     if (items.length === 0) {
@@ -30,25 +32,31 @@ const Items = () => {
 
   return (
     <div className="p-4">
-      {isLoading ? (
-        <LoadingSpinner />
-      ) : (
-        <>
-          <h1 className="text-2xl font-bold mb-4">
-            <Link to="/" className="font-black mr-4">
-              &larr;
-            </Link>
-            Items
-          </h1>
+      <h1 className="text-2xl font-bold mb-4">
+        <Link to="/" className="font-black mr-4">
+          &larr;
+        </Link>
+        Items
+      </h1>
+      {isVisible ? (
+        <div className="fixed inset-0 m-auto flex justify-center items-center bg-gray-100/50 z-20">
           {categories.length === 0 ? (
             ""
           ) : (
-            <AddItemForm categories={categories} />
+            <AddItemForm categories={categories} setIsVisible={setIsVisible} />
           )}
-          <hr className="my-4" />
-          <ItemsList items={items} />
-        </>
+        </div>
+      ) : (
+        ""
       )}
+      <button
+        onClick={() => setIsVisible(true)}
+        className="fixed bottom-4 right-4 w-16 h-16 flex justify-center items-center hover:scale-110 z-10"
+      >
+        <AddIcon />
+      </button>
+      <hr className="my-4" />
+      {isLoading ? <LoadingSpinner /> : <ItemsList items={items} />}
     </div>
   );
 };

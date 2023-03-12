@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { getCategories } from "../features/categorySlice";
 import { createItem } from "../features/itemSlice";
 
-const AddItemForm = ({ categories }) => {
+const AddItemForm = ({ categories, setIsVisible }) => {
   const dispatch = useDispatch();
   const [newItem, setNewItem] = useState({
     name: "",
@@ -24,13 +24,13 @@ const AddItemForm = ({ categories }) => {
     };
 
     await dispatch(createItem(item)).then(() => dispatch(getCategories()));
-
     setNewItem({
       name: "",
       description: "",
       price: 0,
       category: "",
     });
+    setIsVisible(false);
   };
 
   const onChange = (e) => {
@@ -43,9 +43,18 @@ const AddItemForm = ({ categories }) => {
   return (
     <form
       onSubmit={handleCreate}
-      className="flex flex-col gap-4 p-4 bg-white md:max-w-md rounded-lg drop-shadow-lg"
+      className="flex flex-col gap-4 p-4 bg-white w-3/4 md:w-2/4 lg:w-1/4 rounded-lg drop-shadow-lg"
     >
-      <h1 className="text-xl">Create new item</h1>
+      <div className="flex justify-between items-center">
+        <h1 className="text-xl">Create new item</h1>
+        <button
+          type="button"
+          onClick={() => setIsVisible(false)}
+          className="text-2xl font-bold"
+        >
+          &times;
+        </button>
+      </div>
       <input
         className="bg-transparent border-2 outline-none rounded-md p-2 focus:border-blue-500"
         type="text"
