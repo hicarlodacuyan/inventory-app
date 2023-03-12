@@ -49,12 +49,16 @@ const Items = () => {
       ) : (
         ""
       )}
-      <button
-        onClick={() => setIsVisible(true)}
-        className="fixed bottom-4 right-4 w-16 h-16 flex justify-center items-center hover:scale-110 z-10"
-      >
-        <AddIcon />
-      </button>
+      {categories.length === 0 ? (
+        ""
+      ) : (
+        <button
+          onClick={() => setIsVisible(true)}
+          className="fixed bottom-4 right-4 w-16 h-16 flex justify-center items-center hover:scale-110 z-10"
+        >
+          <AddIcon />
+        </button>
+      )}
       <hr className="my-4" />
       {isLoading ? <LoadingSpinner /> : <ItemsList items={items} />}
     </div>
