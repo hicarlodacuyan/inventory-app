@@ -65,9 +65,9 @@ export const getItem = createAsyncThunk(
 
 export const updateItem = createAsyncThunk(
   "items/updateItem",
-  async ({ id, item }, thunkAPI) => {
+  async (item, thunkAPI) => {
     try {
-      return await itemService.updateItem(id, item);
+      return await itemService.updateItem(item.id, item);
     } catch (error) {
       const message =
         (error.response &&
@@ -148,6 +148,22 @@ export const itemSlice = createSlice({
         state.items = state.items.filter((item) => item.id !== action.meta.arg);
       })
       .addCase(deleteItem.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.payload;
+      })
+      .addCase(updateItem.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(updateItem.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = true;
+        const updatedItem = action.meta.arg;
+        state.items = state.items.map((item) =>
+          item.id === updatedItem.id ? updatedItem : item
+        );
+      })
+      .addCase(updateItem.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
         state.message = action.payload;

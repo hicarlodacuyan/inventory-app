@@ -19,7 +19,7 @@ const createItem = async (item) => {
   return response.data;
 };
 
-const updateItem = async ({ id, item }) => {
+const updateItem = async (id, item) => {
   const response = await axios.put(`${baseUrl}/${id}`, item);
 
   return response.data;
