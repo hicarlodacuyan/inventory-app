@@ -46,7 +46,13 @@ const Categories = () => {
         <AddIcon />
       </button>
       <hr className="my-4" />
-      {isLoading ? <LoadingSpinner /> : <CategoriesList />}
+      {categories.length === 0 ? (
+        <p className="text-xl md:text-2xl text-gray-400">
+          Create categories using the add button
+        </p>
+      ) : (
+        <>{isLoading ? <LoadingSpinner /> : <CategoriesList />}</>
+      )}
     </div>
   );
 };

@@ -60,7 +60,13 @@ const Items = () => {
         </button>
       )}
       <hr className="my-4" />
-      {isLoading ? <LoadingSpinner /> : <ItemsList items={items} />}
+      {categories.length === 0 ? (
+        <p className="text-xl md:text-2xl text-gray-400">
+          Add a category to start adding items
+        </p>
+      ) : (
+        <>{isLoading ? <LoadingSpinner /> : <ItemsList items={items} />}</>
+      )}
     </div>
   );
 };
