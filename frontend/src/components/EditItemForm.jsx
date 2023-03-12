@@ -36,7 +36,7 @@ const EditItemForm = ({ item, onCancel }) => {
       className="flex flex-col gap-4 p-4 mb-4 bg-white md:max-w-md rounded-lg drop-shadow-lg"
     >
       <div className="flex justify-between items-center">
-        <h1 className="text-xl">Create new item</h1>
+        <h1 className="text-xl">Edit item</h1>
         <button type="button" onClick={onCancel} className="text-2xl font-bold">
           &times;
         </button>
@@ -72,9 +72,6 @@ const EditItemForm = ({ item, onCancel }) => {
         placeholder="Price in USD"
         required
       />
-      <label htmlFor="category" className="-mb-4 italic text-gray-500">
-        Select category
-      </label>
       <button
         className="bg-gray-200 text-black font-bold rounded-md p-2 hover:bg-gray-300"
         type="submit"
