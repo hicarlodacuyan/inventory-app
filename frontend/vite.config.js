@@ -6,7 +6,7 @@ export default defineConfig({
   plugins: [react()],
   server: {
     proxy: {
-      "/api": "http://localhost:3001",
+      "/api": "https://inventory-app-17bn.onrender.com",
     },
   },
 });
