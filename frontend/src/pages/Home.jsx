@@ -46,6 +46,7 @@ const Home = () => {
   return (
     <div className="p-4">
       <h1 className="text-2xl font-bold mb-4">Home</h1>
+      <hr className="my-4" />
       <section className="flex flex-col md:flex-row gap-4 text-white">
         <div className="home-card bg-cyan-300">
           <div className="flex justify-between p-4">
