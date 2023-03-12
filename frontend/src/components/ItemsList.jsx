@@ -6,8 +6,7 @@ const ItemsList = ({ items }) => {
   const dispatch = useDispatch();
 
   const handleDelete = (id) => {
-    dispatch(deleteItem(id));
-    dispatch(getCategories());
+    dispatch(deleteItem(id)).then(() => dispatch(getCategories()));
   };
 
   return (

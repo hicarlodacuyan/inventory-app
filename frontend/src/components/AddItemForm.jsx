@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
+import { getCategories } from "../features/categorySlice";
 import { createItem } from "../features/itemSlice";
 
 const AddItemForm = ({ categories }) => {
@@ -22,7 +23,8 @@ const AddItemForm = ({ categories }) => {
       selectedCategory,
     };
 
-    dispatch(createItem(item));
+    await dispatch(createItem(item)).then(() => dispatch(getCategories()));
+
     setNewItem({
       name: "",
       description: "",

@@ -1,6 +1,7 @@
 import { useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
 import ItemsList from "../components/ItemsList";
+import AddItemForm from "../components/AddItemForm";
 
 const Category = () => {
   const { id } = useParams();
@@ -15,6 +16,8 @@ const Category = () => {
         </Link>
         {currentCategory.name}
       </h1>
+      <AddItemForm categories={[currentCategory]} />
+      <hr className="my-4" />
       <ItemsList items={currentCategory.items} />
     </div>
   );
