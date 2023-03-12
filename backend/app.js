@@ -16,6 +16,7 @@ url ? connectToDB(url) : console.log("Error connecting to DB");
 
 app.use(cors());
 app.use(express.json());
+app.use(express.static("backend/dist"));
 app.use("/api/items", itemRouter);
 app.use("/api/categories", categoryRouter);
 
