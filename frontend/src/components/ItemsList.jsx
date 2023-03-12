@@ -21,14 +21,14 @@ const ItemsList = ({ items }) => {
       {editItem && (
         <EditItemForm item={editItem} onCancel={() => setEditItem(null)} />
       )}
-      <ul className="flex flex-col md:flex-row gap-4 text-white flex-wrap">
+      <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 text-white flex-wrap">
         {items?.map((item) => (
           <li
-            className="flex-1 bg-teal-400 md:max-w-md rounded-lg drop-shadow-lg overflow-hidden"
+            className="bg-teal-400 md:max-w-md rounded-lg drop-shadow-lg overflow-hidden"
             key={item.id}
           >
             <div className="p-4">
-              <h2 className="text-4xl font-bold">
+              <h2 className="text-2xl font-bold">
                 {item.name} (${item.price})
               </h2>
               <p className="italic">{item.description}</p>

@@ -18,7 +18,7 @@ const Category = () => {
   }, [categories, dispatch]);
 
   return (
-    <div className="h-screen bg-slate-100 p-4">
+    <div className="p-4">
       {currentCategory && (
         <>
           <h1 className="text-2xl font-bold mb-4">

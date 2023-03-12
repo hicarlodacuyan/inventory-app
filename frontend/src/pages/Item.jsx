@@ -6,7 +6,7 @@ const Item = () => {
   const items = location.state;
 
   return (
-    <div className="h-screen bg-slate-100 p-4">
+    <div className="p-4">
       <ItemsList items={items} />
     </div>
   );

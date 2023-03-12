@@ -25,10 +25,10 @@ const CategoriesList = () => {
           onCancel={() => setEditCategory(null)}
         />
       )}
-      <ul className="flex flex-col md:flex-row gap-4 text-white flex-wrap">
+      <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 text-white flex-wrap">
         {categories.map((category) => (
           <li
-            className="flex-1 bg-emerald-300 md:max-w-md rounded-lg overflow-hidden drop-shadow-lg"
+            className="bg-emerald-300 rounded-lg overflow-hidden drop-shadow-lg"
             key={category.id}
           >
             <div className="p-4">
