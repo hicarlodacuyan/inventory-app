@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
 import ItemsList from "../components/ItemsList";
-import LoadingSpinner from "../components/LoadingSpinner";
+import LoadingSpinner from "../components/common/loading/LoadingSpinner";
 import { getItems } from "../features/itemSlice";
 import AddItemForm from "../components/AddItemForm";
 import { getCategories } from "../features/categorySlice";

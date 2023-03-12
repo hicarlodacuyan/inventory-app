@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import CategoriesList from "../components/CategoriesList";
 import { getCategories } from "../features/categorySlice";
 import { useEffect } from "react";
-import LoadingSpinner from "../components/LoadingSpinner";
+import LoadingSpinner from "../components/common/loading/LoadingSpinner";
 import AddCategoryForm from "../components/AddCategoryForm";
 
 const Categories = () => {

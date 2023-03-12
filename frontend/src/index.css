@@ -1,3 +1,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+  .home-card {
+    @apply flex-1 md:max-w-md rounded-lg overflow-hidden drop-shadow-lg;
+  }
+}
