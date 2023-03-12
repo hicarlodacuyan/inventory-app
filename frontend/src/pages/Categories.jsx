@@ -33,11 +33,7 @@ const Categories = () => {
       </h1>
       <AddCategoryForm />
       <hr className="my-4" />
-      {isLoading ? (
-        <LoadingSpinner />
-      ) : (
-        <CategoriesList categories={categories} />
-      )}
+      {isLoading ? <LoadingSpinner /> : <CategoriesList />}
     </div>
   );
 };

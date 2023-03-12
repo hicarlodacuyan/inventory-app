@@ -1,9 +1,11 @@
-import { Link, useLocation } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { Link, useParams } from "react-router-dom";
 import ItemsList from "../components/ItemsList";
 
 const Category = () => {
-  const location = useLocation();
-  const currentCategory = location.state;
+  const { id } = useParams();
+  const { categories } = useSelector((state) => state.category);
+  const [currentCategory] = categories.filter((category) => category.id === id);
 
   return (
     <div className="h-screen bg-slate-100 p-4">

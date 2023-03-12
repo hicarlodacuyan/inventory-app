@@ -1,10 +1,11 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { deleteCategory } from "../features/categorySlice";
 import EditCategoryForm from "./EditCategoryForm";
 
-const CategoriesList = ({ categories }) => {
+const CategoriesList = () => {
+  const { categories } = useSelector((state) => state.category);
   const dispatch = useDispatch();
   const [editCategory, setEditCategory] = useState(null);
 
@@ -37,9 +38,7 @@ const CategoriesList = ({ categories }) => {
               </p>
             </div>
             <div className="text-center font-bold bg-emerald-400 py-2">
-              <Link to={`/categories/${category.id}`} state={category}>
-                More info &rarr;
-              </Link>
+              <Link to={`/categories/${category.id}`}>More info &rarr;</Link>
             </div>
             <div className="flex text-center">
               <button

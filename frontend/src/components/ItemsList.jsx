@@ -1,4 +1,5 @@
 import { useDispatch } from "react-redux";
+import { getCategories } from "../features/categorySlice";
 import { deleteItem } from "../features/itemSlice";
 
 const ItemsList = ({ items }) => {
@@ -6,6 +7,7 @@ const ItemsList = ({ items }) => {
 
   const handleDelete = (id) => {
     dispatch(deleteItem(id));
+    dispatch(getCategories());
   };
 
   return (
