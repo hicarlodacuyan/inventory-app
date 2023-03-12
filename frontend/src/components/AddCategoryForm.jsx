@@ -13,9 +13,9 @@ const AddCategoryForm = ({ setIsVisible }) => {
       name: newCategory,
     };
 
+    setIsVisible(false);
     dispatch(createCategory(category));
     setNewCategory("");
-    setIsVisible(false);
   };
 
   return (

@@ -23,6 +23,7 @@ const AddItemForm = ({ categories, setIsVisible }) => {
       selectedCategory,
     };
 
+    setIsVisible(false);
     await dispatch(createItem(item)).then(() => dispatch(getCategories()));
     setNewItem({
       name: "",
@@ -30,7 +31,6 @@ const AddItemForm = ({ categories, setIsVisible }) => {
       price: 0,
       category: "",
     });
-    setIsVisible(false);
   };
 
   const onChange = (e) => {

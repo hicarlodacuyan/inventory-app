@@ -5,10 +5,11 @@ import { getCategories } from "../features/categorySlice";
 import ItemsList from "../components/ItemsList";
 import AddItemForm from "../components/AddItemForm";
 import AddIcon from "../components/common/icons/AddIcon";
+import LoadingSpinner from "../components/common/loading/LoadingSpinner";
 
 const Category = () => {
   const { id } = useParams();
-  const { categories } = useSelector((state) => state.category);
+  const { categories, isLoading } = useSelector((state) => state.category);
   const dispatch = useDispatch();
   const [currentCategory] = categories.filter((category) => category.id === id);
   const [isVisible, setIsVisible] = useState(false);
@@ -46,7 +47,11 @@ const Category = () => {
             <AddIcon />
           </button>
           <hr className="my-4" />
-          <ItemsList items={currentCategory.items} />
+          {isLoading ? (
+            <LoadingSpinner />
+          ) : (
+            <ItemsList items={currentCategory.items} />
+          )}
         </>
       )}
     </div>
