@@ -2,16 +2,17 @@ import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import CategoriesList from "../components/CategoriesList";
 import { getCategories } from "../features/categorySlice";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import LoadingSpinner from "../components/common/loading/LoadingSpinner";
 import AddCategoryForm from "../components/AddCategoryForm";
+import AddIcon from "../components/common/icons/AddIcon";
 
 const Categories = () => {
   const { categories, isLoading, isError, message } = useSelector(
     (state) => state.category
   );
-
   const dispatch = useDispatch();
+  const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
     if (categories.length === 0) {
@@ -31,7 +32,19 @@ const Categories = () => {
         </Link>
         Categories
       </h1>
-      <AddCategoryForm />
+      {isVisible ? (
+        <div className="fixed inset-0 m-auto flex justify-center items-center bg-gray-100/50 z-20">
+          <AddCategoryForm setIsVisible={setIsVisible} />
+        </div>
+      ) : (
+        ""
+      )}
+      <button
+        onClick={() => setIsVisible(true)}
+        className="fixed bottom-4 right-4 w-16 h-16 flex justify-center items-center hover:scale-110 z-10"
+      >
+        <AddIcon />
+      </button>
       <hr className="my-4" />
       {isLoading ? <LoadingSpinner /> : <CategoriesList />}
     </div>

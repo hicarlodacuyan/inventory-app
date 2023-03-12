@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { createCategory } from "../features/categorySlice";
 
-const AddCategoryForm = () => {
+const AddCategoryForm = ({ setIsVisible }) => {
   const [newCategory, setNewCategory] = useState("");
   const dispatch = useDispatch();
 
@@ -15,14 +15,24 @@ const AddCategoryForm = () => {
 
     dispatch(createCategory(category));
     setNewCategory("");
+    setIsVisible(false);
   };
 
   return (
     <form
       onSubmit={handleCreate}
-      className="flex flex-col gap-4 p-4 bg-white md:max-w-md rounded-lg drop-shadow-lg"
+      className="flex flex-col gap-4 p-4 bg-white w-3/4 md:w-2/4 lg:w-1/4 rounded-lg drop-shadow-lg"
     >
-      <h1 className="text-xl">Create new category</h1>
+      <div className="flex justify-between items-center">
+        <h1 className="text-xl">Create new category</h1>
+        <button
+          type="button"
+          onClick={() => setIsVisible(false)}
+          className="text-2xl font-bold"
+        >
+          &times;
+        </button>
+      </div>
       <input
         className="bg-transparent border-2 outline-none rounded-md p-2 focus:border-blue-500"
         type="text"
