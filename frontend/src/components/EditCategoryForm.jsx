@@ -21,7 +21,7 @@ const EditCategoryForm = ({ category, onCancel }) => {
   return (
     <form
       onSubmit={handleUpdate}
-      className="flex flex-col gap-4 p-4 mb-4 bg-white md:max-w-md rounded-lg drop-shadow-lg"
+      className="flex flex-col gap-4 p-4 mb-4 bg-white w-3/4 md:w-2/4 lg:w-1/4 rounded-lg drop-shadow-lg"
     >
       <div className="flex justify-between items-center">
         <h1 className="text-xl">Edit category</h1>
