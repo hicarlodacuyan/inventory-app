@@ -15,6 +15,9 @@ const getItem = async (req, res) => {
 };
 
 const createItem = async (req, res) => {
+  if (req.body.name === "" || !req.body.name)
+    return res.status(400).json({ message: "Item name can't be empty" });
+
   const { name, description, price, selectedCategory } = req.body;
   const savedCategory = await Category.findById(selectedCategory);
 

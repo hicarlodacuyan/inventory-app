@@ -4,8 +4,9 @@
   "description": "",
   "main": "./backend/index.js",
   "scripts": {
-    "start": "node backend/index.js",
-    "dev": "nodemon backend/index.js"
+    "start": "cross-env NODE_ENV=production node backend/index.js",
+    "dev": "cross-env NODE_ENV=development nodemon backend/index.js",
+    "test": "cross-env NODE_ENV=test jest --verbose --runInBand --forceExit"
   },
   "keywords": [],
   "author": "",
@@ -17,6 +18,12 @@
     "mongoose": "^7.0.1"
   },
   "devDependencies": {
-    "nodemon": "^2.0.21"
+    "cross-env": "^7.0.3",
+    "jest": "^29.5.0",
+    "nodemon": "^2.0.21",
+    "supertest": "^6.3.3"
+  },
+  "jest": {
+    "testEnvironment": "node"
   }
 }

@@ -22,6 +22,9 @@ const getCategory = async (req, res) => {
 };
 
 const createCategory = async (req, res) => {
+  if (req.body.name === "" || !req.body.name)
+    return res.status(400).json({ message: "Empty category can not be added" });
+
   const category = new Category({
     name: req.body.name,
   });
