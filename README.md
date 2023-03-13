@@ -10,3 +10,7 @@ Create a simple inventory management backend app using NodeJS Express. It’s up
 - In the root directory, run <code>npm install</code> & <code>npm run dev</code>
 - In the frontend directory, run <code>npm install</code> & <code>npm run dev</code>
 - Make sure to setup the <code>.env</code> file using the <code>.env.example</code> file given
+
+## Demo link
+
+- [inventory-app](https://inventory-api-l0x0.onrender.com/)
